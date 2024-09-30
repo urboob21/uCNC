@@ -3,8 +3,8 @@
 ################################################################################
 
 arg1 = $(1)
-# export PATH=C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\12.2 rel1\bin\;C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\12.2 rel1\libexec\gcc\arm-none-eabi\12.2.1\;C:\Program Files\CMake\bin;C:\Program Files (x86)\GnuWin32\bin;
-# export TCINSTALL=C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\12.2 rel1$(call arg1,\)
+export PATH=C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\12.2 rel1\bin\;C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\12.2 rel1\libexec\gcc\arm-none-eabi\12.2.1\;C:\Program Files\CMake\bin;C:\Program Files (x86)\GnuWin32\bin;
+export TCINSTALL=C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\12.2 rel1$(call arg1,\)
 export CWD=$(CURDIR)
 export AMS_LICENSE_PATH=
 export TC_VERSION=12.2.1.arm-12-24
