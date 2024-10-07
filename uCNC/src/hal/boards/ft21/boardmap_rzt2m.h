@@ -12,7 +12,7 @@ extern "C"
 #endif
 
 #ifndef MCU
-#define MCU MCU_MCU_RZT
+#define MCU MCU_RZT
 #endif
 
 #ifndef BOARD_NAME

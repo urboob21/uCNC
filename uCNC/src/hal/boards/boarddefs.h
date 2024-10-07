@@ -35,7 +35,8 @@ extern "C"
 
 #define __BOARDMAP_FILE__(B) #B
 #define BOARDMAP_FILE(B) __BOARDMAP_FILE__(B)
-#include BOARD
+// #include BOARD	// TODO: need to update
+#include "ft21/boardmap_rzt2m.h"
 
 #include "../../../boardmap_overrides.h"
 #include "pin_mapping_helper.h"
