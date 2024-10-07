@@ -10,7 +10,7 @@ obj/
 *.d
 
 # Object files
-# *.o
+*.o
 *.ko
 *.obj
 *.elf
@@ -69,6 +69,7 @@ virtualeeprom
 
 # Other files
 *.dat
+*.srec
 
 # VSCode
 *.cfg
