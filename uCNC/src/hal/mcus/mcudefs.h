@@ -66,6 +66,10 @@ extern "C"
 #include "esp32/mcumap_esp32.h"
 #endif
 
+#if (MCU == MCU_RZT)
+#include "rzt/mcumap_rzt.h"
+#endif
+
 #if (MCU == MCU_RP2040)
 #include "rp2040/mcumap_rp2040.h"
 #ifndef CFG_TUSB_MCU
