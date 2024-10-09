@@ -3,8 +3,8 @@
     Description: Contains all MCU and PIN definitions for RZT2M to run µCNC.
 */
 
-#ifndef BOARDMAP_RZT_H
-#define BOARDMAP_RZT_H
+#ifndef BOARDMAP_FT21_H
+#define BOARDMAP_FT21_H
 
 #ifdef __cplusplus
 extern "C"

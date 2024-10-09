@@ -1,7 +1,7 @@
 #include "hal_data.h"
 #include "new.h"
 
-#define BOARD "ft21/boardmap_rzt2m.h" // TODO: need to move onto makefile
+#define BOARD "ft21/boardmap_ft21.h" // TODO: need to move onto makefile
 #include "cnc.h"
 
 FSP_CPP_HEADER
