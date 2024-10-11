@@ -13,5 +13,8 @@
  * */
 void mcu_init(void)
 {
-    // mcu_io_init();             R_IOPORT_Open(&g_ioport_ctrl, &g_bsp_pin_cfg);
+    // Configure 
+    mcu_io_init();  // The FSP generation almostly done this.
+
+    //
 }

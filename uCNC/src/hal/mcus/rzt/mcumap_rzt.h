@@ -7,8 +7,8 @@
 extern "C"
 {
 #endif
-    // Include
 
+// Include
 #include "..\..\..\..\makefiles\rzt\rzt_gen\hal_data.h"
 
 // needed by software delays

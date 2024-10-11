@@ -19,7 +19,8 @@ extern "C"
 #define BOARD_NAME "RZT"
 #endif
 
-// Setup pins
+// Setup step pins
+// TODO: NEED TO UPDATE
 
 #ifdef __cplusplus
 }

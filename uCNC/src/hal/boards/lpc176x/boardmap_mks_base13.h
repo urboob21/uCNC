@@ -39,24 +39,32 @@ extern "C"
 // Setup step pins
 #define STEP0_BIT 0	 // assigns STEP0 pin
 #define STEP0_PORT 2 // assigns STEP0 port
+
 #define STEP1_BIT 1	 // assigns STEP1 pin
 #define STEP1_PORT 2 // assigns STEP1 port
+
 #define STEP2_BIT 2	 // assigns STEP2 pin
 #define STEP2_PORT 2 // assigns STEP2 port
+
 #define STEP3_BIT 3	 // assigns STEP3 pin
 #define STEP3_PORT 2 // assigns STEP3 port
+
 #define STEP4_BIT 8	 // assigns STEP4 pin
 #define STEP4_PORT 2 // assigns STEP4 port
 
 // Setup dir pins
 #define DIR0_BIT 5	// assigns DIR0 pin
 #define DIR0_PORT 0 // assigns DIR0 port
+
 #define DIR1_BIT 11 // assigns DIR1 pin
 #define DIR1_PORT 0 // assigns DIR1 port
+
 #define DIR2_BIT 20 // assigns DIR2 pin
 #define DIR2_PORT 0 // assigns DIR2 port
+
 #define DIR3_BIT 22 // assigns DIR2 pin
 #define DIR3_PORT 0 // assigns DIR2 port
+
 #define DIR4_BIT 13 // assigns DIR2 pin
 #define DIR4_PORT 2 // assigns DIR2 port
 
