@@ -22,7 +22,7 @@ extern "C"
 #define MCU_CYCLES_PER_LOOP_OVERHEAD 0
 #endif
 
-    // map to fsp_rzt2m config pin
+    // map to fsp_rzt2m config pins
     // TODO: need to update for the others GPIO input pins
 #if (defined(DIN0_PORT) && defined(DIN0_BIT))
 #define DIN0 BSP_IO_PORT_02_PIN_1
@@ -31,7 +31,23 @@ extern "C"
 #define DIN3 BSP_IO_PORT_03_PIN_2
 #endif
 
+#if (defined(TX_PORT) && defined(TX_BIT))
+#define TX BSP_IO_PORT_16_PIN_0
+#endif
+#if (defined(RX_PORT) && defined(RX_BIT))
+#define RX BSP_IO_PORT_16_PIN_6
+#endif
 
+#if (defined(TX) && defined(RX))
+#define MCU_HAS_UART
+#endif
+
+// COM registers
+#ifdef MCU_HAS_UART
+// this MCU does not work well with both TX and RX interrupt
+// this forces the sync TX method to fix communication
+// TODO: update this
+#endif
 
 #define mcu_config_output(X) \
     {                        \
@@ -49,6 +65,8 @@ extern "C"
     {                        \
     }
 
+// For GPIO input ??
+// TODO: need to re-check
 #define mcu_config_input_isr(X) \
     {                           \
     }

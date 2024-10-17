@@ -19,7 +19,7 @@ extern "C"
 #define BOARD_NAME "RZT"
 #endif
 
-// Setup GPIO pins (Mode: Input)
+// Define GPIO pins (Mode: Input) ========================================================================================================
 // #define GPIO_0 (BSP_IO_PORT_02_PIN_1)
 #define DIN0_BIT 1
 #define DIN0_PORT 2
@@ -53,7 +53,14 @@ extern "C"
     // #define GPIO_28 (BSP_IO_PORT_21_PIN_6)
     // TODO: need to update
 
-        // Setup step pins
+// Define UART pins ========================================================================================================
+// #define SCI0_TXD_MOSI0 (BSP_IO_PORT_16_PIN_0)
+// #define SCI0_RXD_MISO0 (BSP_IO_PORT_16_PIN_6)
+#define UART_PORT 0 // TODO: need to check: assume we are using SCI0 => UART0
+#define TX_BIT 0
+#define TX_PORT 16
+#define RX_BIT 6
+#define RX_PORT 16
 
 #define ONESHOT_TIMER 4
 #ifdef __cplusplus
