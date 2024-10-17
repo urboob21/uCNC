@@ -22,6 +22,17 @@ extern "C"
 #define MCU_CYCLES_PER_LOOP_OVERHEAD 0
 #endif
 
+    // map to fsp_rzt2m config pin
+    // TODO: need to update for the others GPIO input pins
+#if (defined(DIN0_PORT) && defined(DIN0_BIT))
+#define DIN0 BSP_IO_PORT_02_PIN_1
+#endif
+#if (defined(DIN3_PORT) && defined(DIN3_BIT))
+#define DIN3 BSP_IO_PORT_03_PIN_2
+#endif
+
+
+
 #define mcu_config_output(X) \
     {                        \
     }
