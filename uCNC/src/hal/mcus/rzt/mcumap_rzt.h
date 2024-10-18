@@ -22,6 +22,18 @@ extern "C"
 #define MCU_CYCLES_PER_LOOP_OVERHEAD 0
 #endif
 
+// TODO: need to update
+extern volatile bool rzt2m_global_isr_enabled;
+#define mcu_enable_global_isr()          \
+    {                                    \
+        rzt2m_global_isr_enabled = true; \
+    }
+#define mcu_disable_global_isr()          \
+    {                                     \
+        rzt2m_global_isr_enabled = false; \
+    }
+#define mcu_get_global_isr() rzt2m_global_isr_enabled
+
     // map to fsp_rzt2m config pins
     // TODO: need to update for the others GPIO input pins
 #if (defined(DIN0_PORT) && defined(DIN0_BIT))

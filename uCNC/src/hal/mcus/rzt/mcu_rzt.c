@@ -3,6 +3,8 @@
 
 #include "../../../cnc.h"
 
+volatile bool rzt2m_global_isr_enabled;
+
 /**
  *
  * Initializes the mcu:
@@ -27,6 +29,8 @@ void mcu_init(void)
     mcu_io_init();    // The FSP generation almostly done this.
     mcu_usart_init(); // UART init
     mcu_rtc_init();   // RTC init
+
+    mcu_enable_global_isr();
 }
 
 void mcu_usart_init(void)
