@@ -61,6 +61,7 @@ extern "C"
 // TODO: update this
 #endif
 
+// IO -----------------------------------------------------------------
 // TODO: ioport_pin_cfg_t g_bsp_pin_cfg_data[] already do these one. Need to update.
 #define mcu_config_output(X) \
     {                        \
@@ -108,6 +109,22 @@ extern "C"
         R_BSP_PinToggle(BSP_IO_REGION_SAFE, X); \
     }
 
+// PWM -----------------------------------------------------------------
+// TODO: Need to update
+#define mcu_config_pwm(diopin, freq)            \
+    {                                           \
+        R_BSP_PinToggle(BSP_IO_REGION_SAFE, X); \
+    }
+
+#define mcu_set_pwm(X, Y)                                                       \
+	{                                                                             \
+	}    
+
+#define mcu_get_pwm(X, Y)                                                       \
+	{                                                                             \
+	} 
+
+// Timer -----------------------------------------------------------------
     extern void rzt_delay_us(uint16_t delay);
 #define mcu_delay_us(X) rzt_delay_us(X)
 
