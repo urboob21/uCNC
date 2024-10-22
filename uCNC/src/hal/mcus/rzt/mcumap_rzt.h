@@ -61,6 +61,7 @@ extern "C"
 // TODO: update this
 #endif
 
+// TODO: ioport_pin_cfg_t g_bsp_pin_cfg_data[] already do these one. Need to update.
 #define mcu_config_output(X) \
     {                        \
     }
@@ -77,8 +78,7 @@ extern "C"
     {                        \
     }
 
-// For GPIO input ??
-// TODO: need to re-check
+// TODO: Register the isr callback functions
 #define mcu_config_input_isr(X) \
     {                           \
     }
