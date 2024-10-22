@@ -22,8 +22,8 @@ extern "C"
 #define MCU_CYCLES_PER_LOOP_OVERHEAD 0
 #endif
 
-// TODO: need to update
-extern volatile bool rzt2m_global_isr_enabled;
+    // TODO: need to update
+    extern volatile bool rzt2m_global_isr_enabled;
 #define mcu_enable_global_isr()          \
     {                                    \
         rzt2m_global_isr_enabled = true; \
@@ -107,6 +107,9 @@ extern volatile bool rzt2m_global_isr_enabled;
     {                                           \
         R_BSP_PinToggle(BSP_IO_REGION_SAFE, X); \
     }
+
+    extern void rzt_delay_us(uint16_t delay);
+#define mcu_delay_us(X) rzt_delay_us(X)
 
 #ifdef __cplusplus
 }

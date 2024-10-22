@@ -44,3 +44,10 @@ void mcu_rtc_init()
 {
     // TODO: implement RTC FSP config here
 }
+
+void rzt_delay_us(uint16_t delay)
+{
+    // the units to be used with the software delay function
+    const bsp_delay_units_t bsp_delay_units = BSP_DELAY_UNITS_MICROSECONDS;
+    R_BSP_SoftwareDelay(delay, bsp_delay_units);
+}
