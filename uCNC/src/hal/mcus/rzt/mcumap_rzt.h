@@ -83,14 +83,14 @@ extern "C"
     {                           \
     }
 
-// TODO: need to update
 #define mcu_get_input(X)                          \
     {                                             \
         R_BSP_FastPinRead(BSP_IO_REGION_SAFE, X); \
     }
 
-#define mcu_get_output(X) \
-    {                     \
+#define mcu_get_output(X)                         \
+    {                                             \
+        R_BSP_FastPinRead(BSP_IO_REGION_SAFE, X); \
     }
 
 #define mcu_set_output(X)                    \
