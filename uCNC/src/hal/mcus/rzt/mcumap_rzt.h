@@ -54,55 +54,16 @@ extern "C"
 #define MCU_HAS_UART
 #endif
 
+// TODO: Need to recheck and update
 #if (defined(PWM0_PORT) && defined(PWM0_BIT))
-#define DIO25 BSP_IO_PORT_17_PIN_6
-#define PWM0 BSP_IO_PORT_17_PIN_6
+#define PWM0 0
+    static three_phase_duty_cycle_t duty_cycle_pwm0;
+
 #endif
 #if (defined(PWM1_PORT) && defined(PWM1_BIT))
-#define DIO26 BSP_IO_PORT_18_PIN_1
-#define PWM1 BSP_IO_PORT_18_PIN_1
+#define PWM1 1
+    static three_phase_duty_cycle_t duty_cycle_pwm1;
 #endif
-#if (defined(PWM2_PORT) && defined(PWM2_BIT))
-#define DIO27 BSP_IO_PORT_18_PIN_2
-#define PWM2 BSP_IO_PORT_18_PIN_2
-#endif
-#if (defined(PWM3_PORT) && defined(PWM3_BIT))
-#define DIO28 BSP_IO_PORT_18_PIN_3
-#define PWM3 BSP_IO_PORT_18_PIN_3
-#endif
-#if (defined(PWM4_PORT) && defined(PWM4_BIT))
-#define DIO29 BSP_IO_PORT_17_PIN_7
-#define PWM4 BSP_IO_PORT_17_PIN_7
-#endif
-#if (defined(PWM5_PORT) && defined(PWM5_BIT))
-#define DIO30 BSP_IO_PORT_18_PIN_0
-#define PWM5 BSP_IO_PORT_18_PIN_0
-#endif
-#if (defined(PWM6_PORT) && defined(PWM6_BIT))
-#define DIO31 BSP_IO_PORT_19_PIN_3
-#define PWM6 BSP_IO_PORT_19_PIN_3
-#endif
-#if (defined(PWM7_PORT) && defined(PWM7_BIT))
-#define DIO32 BSP_IO_PORT_19_PIN_6
-#define PWM7 BSP_IO_PORT_19_PIN_6
-#endif
-#if (defined(PWM8_PORT) && defined(PWM8_BIT))
-#define DIO33 BSP_IO_PORT_19_PIN_7
-#define PWM8 BSP_IO_PORT_19_PIN_7
-#endif
-#if (defined(PWM9_PORT) && defined(PWM9_BIT))
-#define DIO34 BSP_IO_PORT_20_PIN_0
-#define PWM9 BSP_IO_PORT_20_PIN_0
-#endif
-#if (defined(PWM10_PORT) && defined(PWM10_BIT))
-#define DIO35 BSP_IO_PORT_19_PIN_4
-#define PWM10 BSP_IO_PORT_19_PIN_4
-#endif
-#if (defined(PWM11_PORT) && defined(PWM11_BIT))
-#define DIO36 BSP_IO_PORT_19_PIN_5
-#define PWM11 BSP_IO_PORT_19_PIN_5
-#endif
-
 
 // COM registers
 #ifdef MCU_HAS_UART
@@ -160,21 +121,48 @@ extern "C"
     }
 
 // PWM -----------------------------------------------------------------
-// TODO: Need to update
-#define mcu_config_pwm(diopin, freq)            \
-    {                                           \
-        R_BSP_PinToggle(BSP_IO_REGION_SAFE, X); \
+// TODO: Need to update following PWM FSP
+#define mcu_config_pwm(diopin, freq)                                                    \
+    {                                                                                   \
+        if (diopin == 0)                                                                \
+        {                                                                               \
+            R_MTU3_THREE_PHASE_Open(&g_mtu3_m0_3ph_drv_ctrl, &g_mtu3_m1_3ph_drv_cfg);   \
+            duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_U] = 0;                            \
+            duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_V] = 0;                            \
+            duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_W] = 0;                            \
+            R_MTU3_THREE_PHASE_DutyCycleSet(&g_mtu3_m0_3ph_drv_ctrl, &duty_cycle_pwm0); \
+            R_POE3_Open(&g_mtu3_three_phase_poe_ctrl, &g_mtu3_three_phase_poe_cfg);     \
+            R_MTU3_THREE_PHASE_Start(&g_mtu3_m0_3ph_drv_ctrl);                          \
+        }                                                                               \
+        else if (diopin == 1)                                                           \
+        {                                                                               \
+        }                                                                               \
     }
 
-#define mcu_set_pwm(X, Y)                                                       \
-	{                                                                             \
-	}    
+    static void mtu_change_duty(int pin, int duty)
+    {
+        duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_U] = duty;
+        duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_V] = duty;
+        duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_W] = duty;
+        R_MTU3_THREE_PHASE_DutyCycleSet(&g_mtu3_m0_3ph_drv_ctrl, &duty_cycle_pwm0);
+        R_POE3_Open(&g_mtu3_three_phase_poe_ctrl, &g_mtu3_three_phase_poe_cfg);
+        R_MTU3_THREE_PHASE_Start(&g_mtu3_m0_3ph_drv_ctrl);
+    }
 
-#define mcu_get_pwm(X, Y)                                                       \
-	{                                                                             \
-	} 
+#define mcu_set_pwm(diopin, duty)      \
+    {                                  \
+        mtu_change_duty(diopin, duty); \
+    }
 
-// Timer -----------------------------------------------------------------
+#define mcu_get_pwm(diopin)                                     \
+    {                                                           \
+        if (diopin == 0)                                        \
+            return duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_U]; \
+        else if (diopin == 1)                                   \
+            return duty_cycle_pwm1.duty[THREE_PHASE_CHANNEL_U]  \
+    }
+
+    // Timer -----------------------------------------------------------------
     extern void rzt_delay_us(uint16_t delay);
 #define mcu_delay_us(X) rzt_delay_us(X)
 

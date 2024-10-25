@@ -62,79 +62,30 @@ extern "C"
 #define RX_BIT 6
 #define RX_PORT 16
 
-// Define PWM pins ========================================================================================================
-// #define MTU33_MTIOC3B (BSP_IO_PORT_17_PIN_6)
-// #define MTU33_MTIOC3D (BSP_IO_PORT_18_PIN_1)
-// #define MTU34_MTIOC4B (BSP_IO_PORT_18_PIN_2)
-// #define MTU34_MTIOC4D (BSP_IO_PORT_18_PIN_3)
-// #define MTU34_MTIOC4A (BSP_IO_PORT_17_PIN_7)
-// #define MTU34_MTIOC4C (BSP_IO_PORT_18_PIN_0)
+    // Define PWM pins ========================================================================================================
+    // #define MTU33_MTIOC3B (BSP_IO_PORT_17_PIN_6)
+    // #define MTU33_MTIOC3D (BSP_IO_PORT_18_PIN_1)
+    // #define MTU34_MTIOC4B (BSP_IO_PORT_18_PIN_2)
+    // #define MTU34_MTIOC4D (BSP_IO_PORT_18_PIN_3)
+    // #define MTU34_MTIOC4A (BSP_IO_PORT_17_PIN_7)
+    // #define MTU34_MTIOC4C (BSP_IO_PORT_18_PIN_0)
 
-// #define MTU36_MTIOC6B (BSP_IO_PORT_19_PIN_3)
-// #define MTU36_MTIOC6D (BSP_IO_PORT_19_PIN_6)
-// #define MTU37_MTIOC7B (BSP_IO_PORT_19_PIN_7)
-// #define MTU37_MTIOC7D (BSP_IO_PORT_20_PIN_0)
-// #define MTU37_MTIOC7A (BSP_IO_PORT_19_PIN_4)
-// #define MTU37_MTIOC7C (BSP_IO_PORT_19_PIN_5)
-#define PWM0_BIT 6   // assigns PWM0 pin
-#define PWM0_PORT 17 // assigns PWM0 pin
+    // #define MTU36_MTIOC6B (BSP_IO_PORT_19_PIN_3)
+    // #define MTU36_MTIOC6D (BSP_IO_PORT_19_PIN_6)
+    // #define MTU37_MTIOC7B (BSP_IO_PORT_19_PIN_7)
+    // #define MTU37_MTIOC7D (BSP_IO_PORT_20_PIN_0)
+    // #define MTU37_MTIOC7A (BSP_IO_PORT_19_PIN_4)
+    // #define MTU37_MTIOC7C (BSP_IO_PORT_19_PIN_5)
+
+#define PWM0_BIT  // assigns PWM0 pin
+#define PWM0_PORT // assigns PWM0 pin
 #define PWM0_CHANNEL
 #define PWM0_TIMER
 
-#define PWM1_BIT 1
-#define PWM1_PORT 18
+#define PWM1_BIT
+#define PWM1_PORT
 #define PWM1_CHANNEL
 #define PWM1_TIMER
-
-#define PWM2_BIT 2
-#define PWM2_PORT 18
-#define PWM2_CHANNEL
-#define PWM2_TIMER
-
-#define PWM3_BIT 3
-#define PWM3_PORT 18
-#define PWM3_CHANNEL
-#define PWM3_TIMER
-
-#define PWM4_BIT 7
-#define PWM4_PORT 17
-#define PWM4_CHANNEL
-#define PWM4_TIMER
-
-#define PWM5_BIT 0
-#define PWM5_PORT 18
-#define PWM5_CHANNEL
-#define PWM5_TIMER
-
-#define PWM6_BIT 3
-#define PWM6_PORT 19
-#define PWM6_CHANNEL
-#define PWM6_TIMER
-
-#define PWM7_BIT 6
-#define PWM7_PORT 19
-#define PWM7_CHANNEL
-#define PWM7_TIMER
-
-#define PWM8_BIT 7
-#define PWM8_PORT 19
-#define PWM8_CHANNEL
-#define PWM8_TIMER
-
-#define PWM9_BIT 0
-#define PWM9_PORT 20
-#define PWM9_CHANNEL
-#define PWM9_TIMER
-
-#define PWM10_BIT 4
-#define PWM10_PORT 19
-#define PWM10_CHANNEL
-#define PWM10_TIMER
-
-#define PWM11_BIT 5
-#define PWM11_PORT 19
-#define PWM11_CHANNEL
-#define PWM11_TIMER
 
 #define ONESHOT_TIMER 4
 #ifdef __cplusplus
