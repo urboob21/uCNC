@@ -188,8 +188,24 @@ extern "C"
             return duty_cycle_pwm1.duty[THREE_PHASE_CHANNEL_U]  \
     }
 
-    // Timer -----------------------------------------------------------------
-    extern void rzt_delay_us(uint16_t delay);
+#define mcu_stop_pwm(diopin)                                   \
+    {                                                          \
+        if (diopin == 0)                                       \
+        {                                                      \
+            R_MTU3_THREE_PHASE_Stop(&g_mtu3_m0_3ph_drv_ctrl);  \
+            R_MTU3_THREE_PHASE_Close(&g_mtu3_m0_3ph_drv_ctrl); \
+            R_POE3_Close(&g_mtu3_three_phase_poe_ctrl);        \
+        }                                                      \
+        else if (diopin == 1)                                  \
+        {                                                      \
+            R_MTU3_THREE_PHASE_Stop(&g_mtu3_m1_3ph_drv_ctrl);  \
+            R_MTU3_THREE_PHASE_Close(&g_mtu3_m1_3ph_drv_ctrl); \
+            R_POE3_Close(&g_mtu3_three_phase_poe_ctrl);        \
+        }
+}
+
+// Timer -----------------------------------------------------------------
+extern void rzt_delay_us(uint16_t delay);
 #define mcu_delay_us(X) rzt_delay_us(X)
 
 #ifdef __cplusplus
