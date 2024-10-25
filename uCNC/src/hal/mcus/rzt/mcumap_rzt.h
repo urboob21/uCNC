@@ -20,6 +20,13 @@ extern "C"
 #endif
 #ifndef MCU_CYCLES_PER_LOOP_OVERHEAD
 #define MCU_CYCLES_PER_LOOP_OVERHEAD 0
+
+// PWM 1000Hz
+#define MTU_C_SET_CYCLE       (0x3E8)   // Carrier cycle = 1ms (PCLKC/4)
+#define MTU_C_CYCLE           (0x1F4)    // Carrier cycle/2 = 0.5ms (PCLKC/4)
+#define MTU_DEAD_TIME         (0x64)      // Dead time = 2us (remains unchanged, consider if needed)
+#define MTU_DUTY(x)          ((uint16_t) MTU_C_CYCLE * (x) / 100 + (MTU_DEAD_TIME / 2))
+
 #endif
 
     // TODO: need to update
@@ -126,7 +133,7 @@ extern "C"
     {                                                                                   \
         if (diopin == 0)                                                                \
         {                                                                               \
-            R_MTU3_THREE_PHASE_Open(&g_mtu3_m0_3ph_drv_ctrl, &g_mtu3_m1_3ph_drv_cfg);   \
+            R_MTU3_THREE_PHASE_Open(&g_mtu3_m0_3ph_drv_ctrl, &g_mtu3_m0_3ph_drv_cfg);   \
             duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_U] = 0;                            \
             duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_V] = 0;                            \
             duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_W] = 0;                            \
@@ -135,18 +142,34 @@ extern "C"
             R_MTU3_THREE_PHASE_Start(&g_mtu3_m0_3ph_drv_ctrl);                          \
         }                                                                               \
         else if (diopin == 1)                                                           \
-        {                                                                               \
+            R_MTU3_THREE_PHASE_Open(&g_mtu3_m1_3ph_drv_ctrl, &g_mtu3_m1_3ph_drv_cfg);   \
+            duty_cycle_pwm1.duty[THREE_PHASE_CHANNEL_U] = 0;                            \
+            duty_cycle_pwm1.duty[THREE_PHASE_CHANNEL_V] = 0;                            \
+            duty_cycle_pwm1.duty[THREE_PHASE_CHANNEL_W] = 0;                            \
+            R_MTU3_THREE_PHASE_DutyCycleSet(&g_mtu3_m1_3ph_drv_ctrl, &duty_cycle_pwm1); \
+            R_POE3_Open(&g_mtu3_three_phase_poe_ctrl, &g_mtu3_three_phase_poe_cfg);     \
+            R_MTU3_THREE_PHASE_Start(&g_mtu3_m1_3ph_drv_ctrl);                          \
         }                                                                               \
     }
 
     static void mtu_change_duty(int pin, int duty)
     {
-        duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_U] = duty;
-        duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_V] = duty;
-        duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_W] = duty;
+        if (pin == 0) {
+        duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_U] = MTU_DUTY(duty);
+        duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_V] = MTU_DUTY(duty);
+        duty_cycle_pwm0.duty[THREE_PHASE_CHANNEL_W] = MTU_DUTY(duty);
         R_MTU3_THREE_PHASE_DutyCycleSet(&g_mtu3_m0_3ph_drv_ctrl, &duty_cycle_pwm0);
         R_POE3_Open(&g_mtu3_three_phase_poe_ctrl, &g_mtu3_three_phase_poe_cfg);
         R_MTU3_THREE_PHASE_Start(&g_mtu3_m0_3ph_drv_ctrl);
+        }else if(pin == 1){
+        duty_cycle_pwm1.duty[THREE_PHASE_CHANNEL_U] = MTU_DUTY(duty);
+        duty_cycle_pwm1.duty[THREE_PHASE_CHANNEL_V] = MTU_DUTY(duty);
+        duty_cycle_pwm1.duty[THREE_PHASE_CHANNEL_W] = MTU_DUTY(duty);
+        R_MTU3_THREE_PHASE_DutyCycleSet(&g_mtu3_m1_3ph_drv_ctrl, &duty_cycle_pwm1);
+        R_POE3_Open(&g_mtu3_three_phase_poe_ctrl, &g_mtu3_three_phase_poe_cfg);
+        R_MTU3_THREE_PHASE_Start(&g_mtu3_m1_3ph_drv_ctrl);
+        }       
+
     }
 
 #define mcu_set_pwm(diopin, duty)      \
