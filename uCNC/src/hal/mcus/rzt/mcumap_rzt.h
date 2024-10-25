@@ -54,6 +54,56 @@ extern "C"
 #define MCU_HAS_UART
 #endif
 
+#if (defined(PWM0_PORT) && defined(PWM0_BIT))
+#define DIO25 BSP_IO_PORT_17_PIN_6
+#define PWM0 BSP_IO_PORT_17_PIN_6
+#endif
+#if (defined(PWM1_PORT) && defined(PWM1_BIT))
+#define DIO26 BSP_IO_PORT_18_PIN_1
+#define PWM1 BSP_IO_PORT_18_PIN_1
+#endif
+#if (defined(PWM2_PORT) && defined(PWM2_BIT))
+#define DIO27 BSP_IO_PORT_18_PIN_2
+#define PWM2 BSP_IO_PORT_18_PIN_2
+#endif
+#if (defined(PWM3_PORT) && defined(PWM3_BIT))
+#define DIO28 BSP_IO_PORT_18_PIN_3
+#define PWM3 BSP_IO_PORT_18_PIN_3
+#endif
+#if (defined(PWM4_PORT) && defined(PWM4_BIT))
+#define DIO29 BSP_IO_PORT_17_PIN_7
+#define PWM4 BSP_IO_PORT_17_PIN_7
+#endif
+#if (defined(PWM5_PORT) && defined(PWM5_BIT))
+#define DIO30 BSP_IO_PORT_18_PIN_0
+#define PWM5 BSP_IO_PORT_18_PIN_0
+#endif
+#if (defined(PWM6_PORT) && defined(PWM6_BIT))
+#define DIO31 BSP_IO_PORT_19_PIN_3
+#define PWM6 BSP_IO_PORT_19_PIN_3
+#endif
+#if (defined(PWM7_PORT) && defined(PWM7_BIT))
+#define DIO32 BSP_IO_PORT_19_PIN_6
+#define PWM7 BSP_IO_PORT_19_PIN_6
+#endif
+#if (defined(PWM8_PORT) && defined(PWM8_BIT))
+#define DIO33 BSP_IO_PORT_19_PIN_7
+#define PWM8 BSP_IO_PORT_19_PIN_7
+#endif
+#if (defined(PWM9_PORT) && defined(PWM9_BIT))
+#define DIO34 BSP_IO_PORT_20_PIN_0
+#define PWM9 BSP_IO_PORT_20_PIN_0
+#endif
+#if (defined(PWM10_PORT) && defined(PWM10_BIT))
+#define DIO35 BSP_IO_PORT_19_PIN_4
+#define PWM10 BSP_IO_PORT_19_PIN_4
+#endif
+#if (defined(PWM11_PORT) && defined(PWM11_BIT))
+#define DIO36 BSP_IO_PORT_19_PIN_5
+#define PWM11 BSP_IO_PORT_19_PIN_5
+#endif
+
+
 // COM registers
 #ifdef MCU_HAS_UART
 // this MCU does not work well with both TX and RX interrupt
