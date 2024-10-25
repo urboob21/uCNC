@@ -121,7 +121,7 @@ extern "C"
     }
 
 // PWM -----------------------------------------------------------------
-// TODO: Need to update following PWM FSP
+// TODO: Need to update following PWM FSP. PWM should be worked at 1000Hz ?
 #define mcu_config_pwm(diopin, freq)                                                    \
     {                                                                                   \
         if (diopin == 0)                                                                \
