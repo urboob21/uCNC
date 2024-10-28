@@ -201,11 +201,11 @@ extern "C"
             R_MTU3_THREE_PHASE_Stop(&g_mtu3_m1_3ph_drv_ctrl);  \
             R_MTU3_THREE_PHASE_Close(&g_mtu3_m1_3ph_drv_ctrl); \
             R_POE3_Close(&g_mtu3_three_phase_poe_ctrl);        \
-        }
-}
+        }                                                      \
+    }
 
-// Timer -----------------------------------------------------------------
-extern void rzt_delay_us(uint16_t delay);
+    // Timer -----------------------------------------------------------------
+    extern void rzt_delay_us(uint16_t delay);
 #define mcu_delay_us(X) rzt_delay_us(X)
 
 #ifdef __cplusplus
