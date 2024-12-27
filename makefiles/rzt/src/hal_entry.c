@@ -2,7 +2,8 @@
 #include "new.h"
 
 #define BOARD "ft21/boardmap_ft21.h" // TODO: need to move onto makefile
-#include "cnc.h"
+#include "../../../uCNC/src/cnc.h"
+
 
 FSP_CPP_HEADER
 void R_BSP_WarmStart(bsp_warm_start_event_t event)
