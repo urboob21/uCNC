@@ -19,15 +19,12 @@ extern "C"
 #define BOARD_NAME "RZT"
 #endif
 
-/* ===========================================================================================================================================
-* Input pins - generic
-* ANALOG# pin defines an analog input pin.
-* ANALOG0 to ANALOG15 are the analog input pins.
-* DIN# pin defines a generic input pin.
-* DIN0 to DIN31 are the generic input pins.
-@see rzt_gen/pin_data.c && rzt_cfg/fsp_cfg/bsp/bsp_pin_cfg.h
-* ===========================================================================================================================================*/
+// @see rzt_gen/pin_data.c && rzt_cfg/fsp_cfg/bsp/bsp_pin_cfg.h
 
+/* ===========================================================================================================================================
+ * Input pins - generic
+ * DIN# pin defines a generic input pin.
+ * ===========================================================================================================================================*/
 // GPIO_0 (BSP_IO_PORT_02_PIN_1)
 #define DIN0_BIT 1
 #define DIN0_PORT 2
@@ -103,6 +100,11 @@ extern "C"
 #define DIN28_PORT 21
 #define DIN28_ISR 0
 
+/* ===========================================================================================================================================
+ * Input pins - special
+ * the input pins that controls some actions using interrupt
+ * @TODO: need to update
+ * ===========================================================================================================================================*/
 // INT_BMS1 (BSP_IO_PORT_02_PIN_4)
 #define BMS1_BIT 4
 #define BMS1_PORT 2
@@ -130,71 +132,64 @@ extern "C"
 
 /* ===========================================================================================================================================
  * Output pins - generic
- * PWM# pin defines a pwm output pin.
- * PWM0 to PWM15 are the pwm output pins.
- * DOUT# pin defines a generic output pin.
- * DOUT0 to DOUT31 are the generic output pins.
+ * Defines a generic output pin.
+ * @TODO: need to update
  * ===========================================================================================================================================*/
 
 // M2_OC_LED (BSP_IO_PORT_04_PIN_1)
 #define M2_OC_LED_BIT 4
 #define M2_OC_LED_PORT 8
-#define M2_OC_LED_ISR 1
 
 // M2_OV_LED (BSP_IO_PORT_04_PIN_2)
 #define M2_OV_LED_BIT 5
 #define M2_OV_LED_PORT 8
-#define M2_OV_LED_ISR 2
 
 // SHDN_BMS0 (BSP_IO_PORT_07_PIN_6)
 #define SHDN_BMS0_BIT 6
 #define SHDN_BMS0_PORT 7
-#define SHDN_BMS0_ISR 3
 
 // ETH_EN (BSP_IO_PORT_07_PIN_7)
 #define ETH_EN_BIT 7
 #define ETH_EN_PORT 7
-#define ETH_EN_ISR 4
 
 // SHDN_BMS1 (BSP_IO_PORT_11_PIN_7)
 #define SHDN_BMS1_BIT 7
 #define SHDN_BMS1_PORT 11
-#define SHDN_BMS1_ISR 5
 
 // ETH0_LINK_LED (BSP_IO_PORT_20_PIN_1)
 #define ETH0_LINK_LED_BIT 1
 #define ETH0_LINK_LED_PORT 20
-#define ETH0_LINK_LED_ISR 6
 
 // ETH1_LINK_LED (BSP_IO_PORT_20_PIN_2)
 #define ETH1_LINK_LED_BIT 2
 #define ETH1_LINK_LED_PORT 20
-#define ETH1_LINK_LED_ISR 7
 
 // ETH2_LINK_LED (BSP_IO_PORT_20_PIN_3)
 #define ETH2_LINK_LED_BIT 3
 #define ETH2_LINK_LED_PORT 20
-#define ETH2_LINK_LED_ISR 8
 
 // M1_OT_LED (BSP_IO_PORT_22_PIN_3)
 #define M1_OT_LED_BIT 3
 #define M1_OT_LED_PORT 22
-#define M1_OT_LED_ISR 9
 
 // M1_OC_LED (BSP_IO_PORT_22_PIN_4)
 #define M1_OC_LED_BIT 4
 #define M1_OC_LED_PORT 22
-#define M1_OC_LED_ISR 10
 
 // M1_OV_LED (BSP_IO_PORT_22_PIN_5)
 #define M1_OV_LED_BIT 5
 #define M1_OV_LED_PORT 22
-#define M1_OV_LED_ISR 11
 
-// Define UART pins ========================================================================================================
-// #define SCI0_TXD_MOSI0 (BSP_IO_PORT_16_PIN_0)
-// #define SCI0_RXD_MISO0 (BSP_IO_PORT_16_PIN_6)
-#define UART_PORT 0 // TODO: need to check: assume we are using SCI0 => UART0
+/* ===========================================================================================================================================
+ * COM pins - special
+* TX pin defines the UART port tx pin.
+* RX pin defines the UART port rx.
+* @TODO: need to update && need to check: assume we are using SCI0 => UART0
+* ===========================================================================================================================================*/
+
+// SCI0_TXD_MOSI0 (BSP_IO_PORT_16_PIN_0)
+// SCI0_RXD_MISO0 (BSP_IO_PORT_16_PIN_6)
+#define UART_PORT 0
 #define TX_BIT 0
 #define TX_PORT 16
 #define RX_BIT 6
